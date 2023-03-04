@@ -3,21 +3,12 @@
 #include <random>
 
 
-
 int random(int* arr) {
     unsigned seed = 1001;
     std::default_random_engine rng(seed);
     std::uniform_int_distribution<unsigned>dstr(0, 9);
     return arr[dstr(rng)];
 }
-
-
-/*int random(int min, int max) {
-    srand(time(NULL)); // генератор случайных чисел
-    int num = min + rand() % (max - min + 1); // получение случайного числа
-
-    return num;
-}*/
 
 
 int* generator(int N) {
@@ -29,7 +20,19 @@ int* generator(int N) {
 }
 
 
-int finder_bin(int* begin, int* end, int& x) {
+int finder_poln(int N, int x) {
+    int* arr = new int[N];
+    arr = generator(N);
+    for (int i {0}; i < N; i++) {
+        if (arr[i] == x) {
+            break;
+        }
+    }
+    return 0;
+}
+
+
+int finder(int* begin, int* end, int& x) {
     int* l = begin - 1;
     int* r = end;
     while (l < r - 1) {
