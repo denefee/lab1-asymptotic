@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 x = np.array([])
 y = np.array([])
 
-for i in np.arange(10, 2001, 10):
+for i in np.arange(10, 10001, 10):
     x = np.append(x, i)
 
 f = open('out22.txt')

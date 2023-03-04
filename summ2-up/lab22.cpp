@@ -33,7 +33,8 @@ int* generator(int N) {
 
 int finder(int* arr, int N, int x) {
     for (int i {0}; i < N; i++) {
-        for (int j = i + 1; j < N; j++) {
+        int j = 0;
+        while (arr[i] + arr [j++] <= x) {
             if (arr[i] + arr[j] == x) {
                 /*std::cout << "Пара: " << i << ", " << j << std::endl;*/
                 break;
@@ -48,19 +49,19 @@ int finder(int* arr, int N, int x) {
 
 
 int main() {
-    int N = 2000;
+    int N = 10000;
     int* arr = generator(N);
 
-    for (int i = 10; i < 2001; i += 10) {
+    for (int i = 10; i < 10001; i += 10) {
         auto begin = std::chrono::steady_clock::now();
-        for (int j = 1; j < 100; j++) {
+        for (int j = 1; j < 5001; j++) {
             int x;
             x = -1;
             finder(arr, i, x);
         }
         auto end = std::chrono::steady_clock::now();
         auto time_span =
-        std::chrono::duration_cast<std::chrono::nanoseconds>((end - begin)/100);
+        std::chrono::duration_cast<std::chrono::nanoseconds>((end - begin)/5000);
         std::cout << time_span.count() << std::endl;
     }
 
