@@ -19,7 +19,4 @@ plt.ylabel(r'Время работы программы, $нc$', fontsize=14)
 plt.title(r'График зависимости времени работы функции поиска бинарным поиском от количества данных в массиве при наихудшем случае', fontsize=14)
 plt.grid(True)
 plt.errorbar(x, y, xerr=0, yerr=0, fmt='+', color='black', capsize=3)
-p = np.polyfit(x, y, 1, full=True, cov=False)
-print(p)
-p = p[0]
 plt.show()

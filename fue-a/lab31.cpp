@@ -31,7 +31,7 @@ int* generator(int N) {
 }*/
 
 
-int finder_opt(int* arr, int N, int x) {
+int strategy_a(int* arr, int N, int x) {
     for (int i = 0; i < N; i++) {
         if (arr[i] == x)&&(i != 0) {
             int zam = arr[0];
@@ -50,13 +50,13 @@ int finder_opt(int* arr, int N, int x) {
 int main() {
     int N = 10000;
     int* arr = generator(N);
-
+    int* bas = generator(N + 1);
     for (int i = 10; i < 10001; i += 10) {
         auto begin = std::chrono::steady_clock::now();
         for (int j = 1; j < 5001; j++) {
             int x;
             x = -1;
-            finder(arr, i, x);
+            strategy_a(arr, i, x);
         }
         auto end = std::chrono::steady_clock::now();
         auto time_span =
