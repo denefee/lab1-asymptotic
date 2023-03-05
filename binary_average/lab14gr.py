@@ -21,6 +21,4 @@ plt.errorbar(x, y, xerr=0, yerr=0, fmt='+', color='black', capsize=3)
 p = np.polyfit(x, y, 1, full=True, cov=False)
 print(p)
 p = p[0]
-# yfit = np.polyval(p,x)
-# plt.plot(x, yfit, color="firebrick")
 plt.show()
