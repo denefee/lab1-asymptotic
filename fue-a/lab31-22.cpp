@@ -32,7 +32,7 @@ int* generator(int N) {
 }*/
 
 
-int strategy_a(int* arr, int N, int x) {
+int strategy_a(int*& arr, int N, int x) {
     for (int i = 0; i < N; i++) {
         if ((arr[i] == x) && (i != 0)) {
             int zam = arr[0];
@@ -51,7 +51,7 @@ int strategy_a(int* arr, int N, int x) {
 int main() {
     int N = 100000;
     int* bas = new int[5];
-    for (int i = 1000; i < 100001; i += 1000) {    
+    for (int i = 100; i < 100001; i += 100) {    
         int* arr = generator(i);
             bas[0] = 0;
             bas[1] = floor(i/4);
@@ -66,7 +66,7 @@ int main() {
         }
         auto end = std::chrono::steady_clock::now();
         auto time_span =
-        std::chrono::duration_cast<std::chrono::nanoseconds>((end - begin)/10);
+        std::chrono::duration_cast<std::chrono::nanoseconds>((end - begin)/100);
         std::cout << time_span.count() << std::endl;
     }
 

@@ -2,8 +2,7 @@
 #include <chrono>
 #include <random>
 
-/*стратегия а, изменится ли асимптотика, если значения равномерно распределены?*/
-
+/*стратегия а, изменится ли асимптотика, если значения неравномерно распределены?*/
 
 int random(int* arr) {
     unsigned seed = 1001;
@@ -51,18 +50,18 @@ int strategy_a(int*& arr, int N, int x) {
 
 int main() {
     int N = 100000;
-    int* bas = generator(N + 1);
+    int* bas = generator(10);
     for (int i = 100; i < 100001; i += 100) {    
         int* arr = generator(i);
         auto begin = std::chrono::steady_clock::now();
-        for (int j = 1; j < 51; j++) {
-            for (int k = 0; k <= i + 1; k++) {
+        for (int j = 1; j < 100001; j++) {
+            for (int k = 0; k < 10; k++) {
                 strategy_a(arr, i, bas[k]);
             }
         }
         auto end = std::chrono::steady_clock::now();
         auto time_span =
-        std::chrono::duration_cast<std::chrono::nanoseconds>((end - begin)/(50));
+        std::chrono::duration_cast<std::chrono::nanoseconds>((end - begin)/100000);
         std::cout << time_span.count() << std::endl;
     }
 
