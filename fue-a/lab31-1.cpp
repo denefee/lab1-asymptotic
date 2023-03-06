@@ -2,6 +2,8 @@
 #include <chrono>
 #include <random>
 
+/*стратегия а, изменится ли асимптотика, если значения равномерно распределены?*/
+
 
 int random(int* arr) {
     unsigned seed = 1001;
@@ -33,7 +35,7 @@ int* generator(int N) {
 
 int strategy_a(int* arr, int N, int x) {
     for (int i = 0; i < N; i++) {
-        if (arr[i] == x)&&(i != 0) {
+        if ((arr[i] == x) && (i != 0)) {
             int zam = arr[0];
             arr[i] = zam;
             arr[0] = x;
@@ -48,19 +50,19 @@ int strategy_a(int* arr, int N, int x) {
 
 
 int main() {
-    int N = 10000;
-    int* arr = generator(N);
+    int N = 100000;
     int* bas = generator(N + 1);
-    for (int i = 10; i < 10001; i += 10) {
+    for (int i = 100; i < 100001; i += 100) {    
+        int* arr = generator(N);
         auto begin = std::chrono::steady_clock::now();
-        for (int j = 1; j < 5001; j++) {
-            int x;
-            x = -1;
-            strategy_a(arr, i, x);
+        for (int j = 1; j < 51; j++) {
+            for (int k = 0; k <= i + 1; k++) {
+                strategy_a(arr, i, bas[k]);
+            }
         }
         auto end = std::chrono::steady_clock::now();
         auto time_span =
-        std::chrono::duration_cast<std::chrono::nanoseconds>((end - begin)/5000);
+        std::chrono::duration_cast<std::chrono::nanoseconds>((end - begin)/(50));
         std::cout << time_span.count() << std::endl;
     }
 

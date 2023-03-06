@@ -4,11 +4,11 @@ import matplotlib.pyplot as plt
 x = np.array([])
 y = np.array([])
 
-for i in np.arange(1000, 1000000, 1000):
+for i in np.arange(1000, 1000001, 1000):
     x = np.append(x, i)
     
 
-f = open('out13.txt')
+f = open('out31.txt')
 for line in f:
     y = np.append(y, int(line))
 f.close()
@@ -20,3 +20,4 @@ plt.title(r'График зависимости времени работы фу
 plt.grid(True)
 plt.errorbar(x, y, xerr=0, yerr=0, fmt='+', color='black', capsize=3)
 plt.show()
+
