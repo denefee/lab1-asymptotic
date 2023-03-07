@@ -4,13 +4,13 @@ import matplotlib.pyplot as plt
 x = np.array([])
 y = np.array([])
 
-for i in np.arange(1000, 100001, 1000):
+for i in np.arange(100, 100000, 100):
     x = np.append(x, i)
 
 f = open('out31-21.txt')
 for line in f:
     y = np.append(y, int(line))
-f.close()
+f.close() 
 
 
 plt.xlabel(r'Количество данных в массиве', fontsize=14)
@@ -22,5 +22,5 @@ p = np.polyfit(x, y, 1, full=True, cov=False)
 print(p)
 p = p[0]
 yfit = np.polyval(p,x)
-# plt.plot(x, yfit, color="firebrick")
+plt.plot(x, yfit, color="firebrick")
 plt.show()

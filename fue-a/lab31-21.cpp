@@ -49,19 +49,18 @@ int strategy_a(int*& arr, int N, int x) {
 
 
 int main() {
-    int N = 100000;
     int bas[10]{90, 91, 92, 93, 94, 95, 96, 97, 98, 99};
-    for (int i = 1000; i < 100001; i += 1000) {    
+    for (int i = 100; i < 100000; i += 100) {    
         int* arr = generator(i);
         auto begin = std::chrono::steady_clock::now();
-        for (int j = 1; j < 101; j++) {
-            for (int k = 0; k < 9; k++) {
+        for (int j = 1; j < 10001; j++) {
+            for (int k = 0; k < 10; k++) {
                 strategy_a(arr, i, bas[k]);
             }
         }
         auto end = std::chrono::steady_clock::now();
         auto time_span =
-        std::chrono::duration_cast<std::chrono::nanoseconds>((end - begin)/100);
+        std::chrono::duration_cast<std::chrono::nanoseconds>((end - begin)/10000);
         std::cout << time_span.count() << std::endl;
     }
 

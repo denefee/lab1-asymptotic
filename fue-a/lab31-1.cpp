@@ -17,7 +17,7 @@ int random(int* arr) {
 int* generator(int N) {
     int* arr = new int[N];
     for (int i {0}; i < N; i++)
-        std::cin >> arr[i];
+        arr[i] = i;
 
     return arr;
 }
@@ -50,19 +50,19 @@ int strategy_a(int*& arr, int N, int x) {
 
 
 int main() {
-    int N = 100000;
+    int N = 2000;
     int* bas = generator(N + 1);
-    for (int i = 100; i < 100001; i += 100) {    
+    for (int i = 10; i < N + 1; i += 10) {    
         int* arr = generator(i);
         auto begin = std::chrono::steady_clock::now();
-        for (int j = 1; j < 51; j++) {
+        for (int j = 0; j < 75; j++) {
             for (int k = 0; k <= i + 1; k++) {
                 strategy_a(arr, i, bas[k]);
             }
         }
         auto end = std::chrono::steady_clock::now();
         auto time_span =
-        std::chrono::duration_cast<std::chrono::nanoseconds>((end - begin)/(50));
+        std::chrono::duration_cast<std::chrono::nanoseconds>((end - begin)/(75));
         std::cout << time_span.count() << std::endl;
     }
 

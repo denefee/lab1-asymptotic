@@ -16,7 +16,7 @@ int random(int* arr) {
 int* generator(int N) {
     int* arr = new int[N];
     for (int i {0}; i < N; i++)
-        std::cin >> arr[i];
+        arr[i] = i;
 
     return arr;
 }
@@ -59,7 +59,7 @@ int main() {
             bas[3] = floor(3*i/4);
             bas[4] = i - 1;
         auto begin = std::chrono::steady_clock::now();
-        for (int j = 1; j < 101; j++) {
+        for (int j = 0; j < 100; j++) {
             for (int k = 0; k < 5; k++) {
                 strategy_a(arr, i, bas[k]);
             }
