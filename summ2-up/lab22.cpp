@@ -15,7 +15,7 @@ int random(int* arr) {
 int* generator(int N) {
     int* arr = new int[N];
     for (int i {0}; i < N; i++)
-        std::cin >> arr[i];
+        arr[i] = i;
 
     return arr;
 }
@@ -52,16 +52,16 @@ int main() {
     int N = 10000;
     int* arr = generator(N);
 
-    for (int i = 10; i < 10001; i += 10) {
+    for (int i = 20; i < 10001; i += 20) {
         auto begin = std::chrono::steady_clock::now();
-        for (int j = 1; j < 5001; j++) {
+        for (int j = 1; j < 10001; j++) {
             int x;
             x = -1;
             finder(arr, i, x);
         }
         auto end = std::chrono::steady_clock::now();
         auto time_span =
-        std::chrono::duration_cast<std::chrono::nanoseconds>((end - begin)/5000);
+        std::chrono::duration_cast<std::chrono::nanoseconds>((end - begin)/10000);
         std::cout << time_span.count() << std::endl;
     }
 

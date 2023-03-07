@@ -23,7 +23,7 @@ int random(int* arr) {
 int* generator(int N) {
     int* arr = new int[N];
     for (int i {0}; i < N; i++)
-        std::cin >> arr[i];
+        arr[i] = i;
 
     return arr;
 }
@@ -52,7 +52,7 @@ int main() {
     int* arr = new int[1000000];
     for (int k = 0; k < 1000000; k++)
         arr[k] = k;   
-    for (int i = 1000; i < 1000000; i += 1000) {
+    for (int i = 100; i < 1000000; i += 100) {
         auto begin = std::chrono::steady_clock::now();
         for (int j = 1; j < 100001; j++) {
             hud_finder_bin(arr, arr + i - 1);

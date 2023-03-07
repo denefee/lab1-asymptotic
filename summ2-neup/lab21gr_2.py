@@ -5,7 +5,7 @@ import math
 x = np.array([])
 y = np.array([])
 
-for i in np.arange(30, 4001, 10):
+for i in np.arange(20, 4001, 10):
     x = np.append(x, np.log(i))
 
 f = open('out21.txt')

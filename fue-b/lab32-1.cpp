@@ -2,7 +2,8 @@
 #include <chrono>
 #include <random>
 
-/*стратегия а, изменится ли асимптотика, если значения неравномерно распределены?*/
+/*стратегия а, изменится ли асимптотика, если значения равномерно распределены?*/
+
 
 int random(int* arr) {
     unsigned seed = 1001;
@@ -16,7 +17,7 @@ int random(int* arr) {
 int* generator(int N) {
     int* arr = new int[N];
     for (int i {0}; i < N; i++)
-        arr[i] = i;
+        std::cin >> arr[i];
 
     return arr;
 }
@@ -32,12 +33,12 @@ int* generator(int N) {
 }*/
 
 
-int strategy_a(int*& arr, int N, int x) {
+int strategy_b(int*& arr, int N, int x) {
     for (int i = 0; i < N; i++) {
         if ((arr[i] == x) && (i != 0)) {
-            int zam = arr[0];
+            int zam = arr[i - 1];
             arr[i] = zam;
-            arr[0] = x;
+            arr[i - 1] = x;
             break;
         }
         else {
@@ -50,18 +51,18 @@ int strategy_a(int*& arr, int N, int x) {
 
 int main() {
     int N = 100000;
-    int bas[10]{90, 91, 92, 93, 94, 95, 96, 97, 98, 99};
-    for (int i = 1000; i < 100001; i += 1000) {    
+    int* bas = generator(N + 1);
+    for (int i = 100; i < 100001; i += 100) {    
         int* arr = generator(i);
         auto begin = std::chrono::steady_clock::now();
-        for (int j = 1; j < 101; j++) {
-            for (int k = 0; k < 9; k++) {
-                strategy_a(arr, i, bas[k]);
+        for (int j = 1; j < 51; j++) {
+            for (int k = 0; k <= i + 1; k++) {
+                strategy_b(arr, i, bas[k]);
             }
         }
         auto end = std::chrono::steady_clock::now();
         auto time_span =
-        std::chrono::duration_cast<std::chrono::nanoseconds>((end - begin)/100);
+        std::chrono::duration_cast<std::chrono::nanoseconds>((end - begin)/(50));
         std::cout << time_span.count() << std::endl;
     }
 

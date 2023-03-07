@@ -27,10 +27,12 @@ int main() {
     int* arr = generator(N);
     for (int i = 100; i < 1000001; i += 100) {
         auto begin = std::chrono::steady_clock::now();
-        hudsh_finder_poln(i, arr);
+        for (int j = 0; j < 10; j++) {
+            hudsh_finder_poln(i, arr);
+        }
         auto end = std::chrono::steady_clock::now();
         auto time_span =
-        std::chrono::duration_cast<std::chrono::microseconds>(end - begin);
+        std::chrono::duration_cast<std::chrono::microseconds>((end - begin)/10);
         std::cout << time_span.count() << std::endl;
     }
 

@@ -15,7 +15,7 @@ int random(int* arr) {
 int* generator(int N) {
     int* arr = new int[N];
     for (int i {0}; i < N; i++)
-        std::cin >> arr[i];
+        arr[i] = i;
 
     return arr;
 }

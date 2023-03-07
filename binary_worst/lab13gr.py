@@ -4,11 +4,11 @@ import matplotlib.pyplot as plt
 x = np.array([])
 y = np.array([])
 
-for i in np.arange(1000, 1000001, 1000):
+for i in np.arange(100, 1000000, 100):
     x = np.append(x, i)
     
 
-f = open('out31.txt')
+f = open('out13.txt')
 for line in f:
     y = np.append(y, int(line))
 f.close()
