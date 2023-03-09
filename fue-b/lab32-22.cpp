@@ -68,7 +68,9 @@ int main() {
         auto time_span =
         std::chrono::duration_cast<std::chrono::nanoseconds>((end - begin)/200);
         std::cout << time_span.count() << std::endl;
+        delete arr;
     }
+    delete bas;
 
     return 0;
 }

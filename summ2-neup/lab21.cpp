@@ -63,6 +63,7 @@ int main() {
         std::chrono::duration_cast<std::chrono::microseconds>((end - begin)/50);
         std::cout << time_span.count() << std::endl;
     }
+    delete arr;
 
     return 0;
 }

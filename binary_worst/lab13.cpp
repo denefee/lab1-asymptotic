@@ -62,6 +62,7 @@ int main() {
         std::chrono::duration_cast<std::chrono::nanoseconds>((end - begin)/100000);
         std::cout << time_span.count() << std::endl;
     }
+    delete arr;
 
     return 0;
 }
